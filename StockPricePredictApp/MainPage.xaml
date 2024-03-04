@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StockPricePredictApp.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Label Text="Date:"/>
+            <DatePicker x:Name="Date" Date="2018-09-27"></DatePicker>
+            <Label Text="Open:"/>
+            <Entry x:Name="Open" Text="234.55"></Entry>
+            <Label Text="High:"/>
+            <Entry x:Name="High" Text="236.8"></Entry>
+            <Label Text="Low:"/>
+            <Entry x:Name="Low" Text="231.1"></Entry>
+            <Label Text="Last:"/>
+            <Entry x:Name="Last" Text="233.8"></Entry>
+            <Label Text="Total_Trade_Quantity:"/>
+            <Entry x:Name="Total_Trade_Quantity" Text="5082859"></Entry>
+            <Label Text="Turnover__Lacs:"/>
+            <Entry x:Name="Turnover__Lacs" Text="11859.95"></Entry>
+            <Button
+                x:Name="BtnPredict"
+                Text="預測" 
+                Clicked="OnPredictClicked"
+                HorizontalOptions="Fill" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

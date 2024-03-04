@@ -1,0 +1,65 @@
+﻿<h3>股票交易資料</h3>
+<br />
+<div class="container">
+    <div class="form-group">
+        <label class="form-label">Date:</label>
+        <input id="date" type="date" value="2018-09-27" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Open:</label>
+        <input id="open" value="234.55" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">High:</label>
+        <input id="high" value="236.8" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Low:</label>
+        <input id="low" value="231.1" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Last:</label>
+        <input id="last" value="233.8" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Total_Trade_Quantity:</label>
+        <input id="totalTradeQuantity" value="5082859" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Turnover__Lacs:</label>
+        <input id="turnoverLacs" value="11859.95" class="form-control" />
+    </div>
+    <div class="form-group">
+        <button id="predict" class="btn btn-success">預測</button>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        var baseAddress = "https://localhost:7021";
+        $("#predict").on("click", function () {
+            //alert("Predict")
+            var input = {
+                Date:$("#date").val(),
+                Open:$("#open").val(),
+                High:$("#high").val(),
+                Low:$("#low").val(),
+                Last:$("#last").val(),
+                Close:0,
+                Total_Trade_Quantity:$("#totalTradeQuantity").val(),
+                Turnover__Lacs_:$("#turnoverLacs").val(),
+            };
+            $.ajax({
+                type:"post",
+                url: `${baseAddress}/Home/PredictStockPrice`,
+                data: input,
+            }).done(function (data) { 
+                //alert(JSON.stringify(data));
+                alert(`預測股價:${(data["score"]).toFixed(2)}`)
+            }).fail(function (err) { 
+                alert(err.statusText);
+            });
+        });
+    </script>
+}
